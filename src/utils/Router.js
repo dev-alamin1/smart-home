@@ -8,6 +8,7 @@ import About  from '../components/About';
 export const router = createBrowserRouter([{
     path: '/',
     element: <Root/>,
+    loader:()=>fetch('products.json'),
     children:[
         {
             path:'/', element:<Home/>
