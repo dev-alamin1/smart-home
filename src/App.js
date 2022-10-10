@@ -1,10 +1,18 @@
 import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Home from './components/Home';
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path:'/',
+      element:<Home/>
+    }
+  ]);
+
   return (
-    <div className='flex min-h-screen justify-center items-center'>
-      <h1 className='text-5xl'>Welcome to Smart Home Starter Template</h1>
-    </div>
+    <RouterProvider router={router}></RouterProvider>
   )
 }
 
