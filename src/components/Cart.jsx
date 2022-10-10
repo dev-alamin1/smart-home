@@ -4,13 +4,23 @@ import { Link } from 'react-router-dom'
 import { CartContext } from './Root'
 import CartItem from './CartItem';
 
-const Cart = () => {
+  const Cart = () => {
+  
+  // receive cart context data 
   const [cart,setCart] = useContext(CartContext);
 
+  // for product total price 
   let price = 0;
   for(let product of cart)
   {
      price += product.price * product.quantity;
+  }
+
+  // remove cart item from cart and local storage 
+
+  const removeCartItemHandler = id =>{
+        let remainingProductOncart = cart.filter(product=>product.id !== id);
+        setCart(remainingProductOncart);
   }
 
   return (
@@ -21,7 +31,7 @@ const Cart = () => {
         </h2>
         <ul className='flex flex-col divide-y divide-gray-700'>
               {
-                cart.map(product=><CartItem key={product.id} product={product}/>)
+            cart.map(product => <CartItem key={product.id} product={product} removeCartItemHandler={removeCartItemHandler} />)
               }
         </ul>
         <div className='space-y-1 text-right'>
