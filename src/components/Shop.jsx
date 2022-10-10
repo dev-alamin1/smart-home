@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { ProductContext } from './Root';
+import React, { useContext } from 'react'
+import { CartContext, ProductContext } from './Root';
 import Product from './Product';
 import {addToLocalStorage} from '../utils/LocalStorage';
 import { toast } from 'react-toastify';
@@ -8,10 +8,7 @@ const Shop = () => {
 
   const products = useContext(ProductContext);
 
-    // make product cart 
-  const [cart,setCart] = useState([]);
-
-  console.log(cart);
+  const [cart,setCart] = useContext(CartContext);
 
   // add to cart handler 
 
