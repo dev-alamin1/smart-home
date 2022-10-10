@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from './Root'
 import CartItem from './CartItem';
-import { removeProductFromLocalStorage } from '../utils/LocalStorage';
+import { removeProductFromLocalStorage,clearLocalStorageData } from '../utils/LocalStorage';
 import { toast } from 'react-toastify';
 
 
@@ -29,6 +29,14 @@ import { toast } from 'react-toastify';
         
   }
 
+  const clearCartItem = ()=>{
+
+    setCart([]);
+    clearLocalStorageData();
+    toast.success("Order Placed !",{autoClose:2000});
+
+  }
+
   return (
     <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900'>
       <div className='flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 '>
@@ -41,9 +49,7 @@ import { toast } from 'react-toastify';
               }
         </ul>
         <div className='space-y-1 text-right'>
-          <p>
-            Total amount: <span className='font-semibold'>${price}</span>
-          </p>
+          {price > 0 && <p>Total amount: <span className='font-semibold'>${price}</span></p>}
           <p className='text-sm text-gray-400'>
             Not including taxes and shipping costs
           </p>
@@ -57,12 +63,12 @@ import { toast } from 'react-toastify';
               Back <span className='sr-only sm:not-sr-only'>to shop</span>
             </button>
           </Link>
-          <button
+          {price > 0 && <button onClick={() => clearCartItem()}
             type='button'
             className='px-6 py-2 border font-semibold rounded-full hover:bg-cyan-400 bg-cyan-200 text-gray-800'
           >
             Place Order
-          </button>
+          </button>}
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ const Header = () => {
               title='Cart'
               className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
             >
-              <p> Cart <sup>{cart.length}</sup></p>
+              <p> Cart <sup>{cart.length == 0 ? "":cart.length }</sup></p>
             </Link>
           </li>
           <li>
