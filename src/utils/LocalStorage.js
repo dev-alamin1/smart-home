@@ -28,4 +28,20 @@ const addToLocalStorage = id=>{
      localStorage.setItem("shopping-cart",JSON.stringify(shoppingCart));
 }
 
-export default addToLocalStorage;
+
+const getProductFromLocalStorage = ()=>{
+
+    const prodtuctExistOnLocalStorage = localStorage.getItem("shopping-cart");
+
+    let shoppingCart = {};
+
+    if (prodtuctExistOnLocalStorage) {
+        shoppingCart = JSON.parse(prodtuctExistOnLocalStorage);
+
+    }
+
+    return shoppingCart;
+
+}
+
+export {addToLocalStorage,getProductFromLocalStorage};

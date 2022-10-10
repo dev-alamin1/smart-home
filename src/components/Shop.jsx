@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { ProductContext } from './Root';
 import Product from './Product';
-import addToLocalStorage from '../utils/LocalStorage';
+import {addToLocalStorage} from '../utils/LocalStorage';
 import { toast } from 'react-toastify';
 
 const Shop = () => {
