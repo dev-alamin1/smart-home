@@ -3,6 +3,9 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from './Root'
 import CartItem from './CartItem';
+import { removeProductFromLocalStorage } from '../utils/LocalStorage';
+import { toast } from 'react-toastify';
+
 
   const Cart = () => {
   
@@ -21,6 +24,9 @@ import CartItem from './CartItem';
   const removeCartItemHandler = id =>{
         let remainingProductOncart = cart.filter(product=>product.id !== id);
         setCart(remainingProductOncart);
+        removeProductFromLocalStorage(id);
+        toast.warning("Product Deleted !",{autoClose:1000})
+        
   }
 
   return (

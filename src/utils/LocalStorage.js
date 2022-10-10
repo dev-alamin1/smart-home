@@ -39,9 +39,14 @@ const getProductFromLocalStorage = ()=>{
         shoppingCart = JSON.parse(prodtuctExistOnLocalStorage);
 
     }
-
     return shoppingCart;
 
 }
 
-export {addToLocalStorage,getProductFromLocalStorage};
+const removeProductFromLocalStorage = id =>{
+      let cartProduct =  getProductFromLocalStorage();
+      delete cartProduct[id];
+      localStorage.setItem("shopping-cart",JSON.stringify(cartProduct))
+}
+
+export {addToLocalStorage,getProductFromLocalStorage,removeProductFromLocalStorage};
